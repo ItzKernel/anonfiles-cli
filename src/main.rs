@@ -1,7 +1,6 @@
 use reqwest::blocking::Client;
 use serde_json::{from_str, Value};
-use std::fs::File;
-use std::path::{Path, PathBuf};
+use std::path::{Path};
 
 pub mod util;
 
@@ -38,7 +37,7 @@ fn u(path: String) {
     let status: bool = json["status"].as_bool().unwrap();
 
     if status == true {
-        println!("{}", json["data"]["file"]["url"]["short"].as_str().unwrap());
+        println!("URL: {}", json["data"]["file"]["url"]["short"].as_str().unwrap());
     } else {
         println!(
             "Anonfiles said: \"{}\"",
@@ -61,7 +60,7 @@ fn main() {
         return h(args[0].clone());
     }
 
-    return match args[1].as_str() {
+    match args[1].as_str() {
         "-h" | "--help" => {
             h(args[0].clone());
         }
@@ -76,4 +75,6 @@ fn main() {
             h(args[0].clone());
         }
     };
+
+    println!("");
 }
