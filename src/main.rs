@@ -10,10 +10,9 @@ fn pad_cmdname(cmd: &str) -> String {
 
 #[rustfmt::skip]
 fn h(command: String) {
-    println!("\n- Anonfiles CLI -");
+    println!("- Anonfiles CLI -");
     println!("{} | {} -h, --help", pad_cmdname("Help"), command);
     println!("{} | {} -u, --upload <path>", pad_cmdname("Upload"), command);
-    println!("");
 }
 
 fn u(path: String) {
@@ -54,6 +53,7 @@ fn u(path: String) {
 }
 
 fn main() {
+    println!("");
     let args: Vec<String> = std::env::args().collect();
 
     if args.len() < 2 {
